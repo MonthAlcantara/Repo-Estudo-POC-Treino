@@ -1,6 +1,7 @@
 package io.github.monthalcantara.bibliotecaCDD.livro;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.ISBN;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -16,15 +17,16 @@ public class Livro {
     private Integer id;
 
     @NotBlank
-    @Column(name="titulo",nullable = false)
+    @Column(name = "titulo", nullable = false)
     private String titulo;
 
     @NotNull
-    @Column(name="preco",nullable = false)
+    @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
+    @ISBN(type = ISBN.Type.ISBN_10)
     @NotBlank
-    @Column(name="isbn",nullable = false, unique = true)
+    @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
 
     @Deprecated
@@ -38,6 +40,6 @@ public class Livro {
     }
 
     public LivroResponse toResponse() {
-        return new LivroResponse(this.titulo,this.preco,this.isbn);
+        return new LivroResponse(this.titulo, this.preco, this.isbn);
     }
 }
