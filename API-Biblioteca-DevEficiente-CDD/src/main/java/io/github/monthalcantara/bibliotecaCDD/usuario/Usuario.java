@@ -15,11 +15,16 @@ public class Usuario {
     @Column(name = "tipo_usuario", nullable = false)
     private TipoUsuario tipoUsuario;
 
+    @NotNull
+    @Column(name = "quantidade_livros_emprestados", nullable = false)
+    private int qtdLivrosEmprestados;
+
     @Deprecated
     private Usuario() {
     }
 
     public Usuario( @NotNull TipoUsuario tipoUsuario) {
+        this.qtdLivrosEmprestados = 0;
         this.tipoUsuario = tipoUsuario;
     }
 
@@ -29,5 +34,13 @@ public class Usuario {
 
     public String getDescricaoTipoUsuario() {
         return tipoUsuario.getDescricao();
+    }
+
+    public int getQtdLivrosEmprestados() {
+        return qtdLivrosEmprestados;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

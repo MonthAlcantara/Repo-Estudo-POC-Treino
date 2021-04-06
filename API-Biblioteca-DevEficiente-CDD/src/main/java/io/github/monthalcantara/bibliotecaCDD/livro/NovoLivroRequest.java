@@ -1,5 +1,6 @@
 package io.github.monthalcantara.bibliotecaCDD.livro;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.monthalcantara.bibliotecaCDD.utils.validation.ValorUnico;
 
@@ -7,6 +8,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+// Caso seja enviado um campo desconhecido, este será ignorado
+// Sem essa anotação teoricamente daria falha
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class NovoLivroRequest {
 
     @NotBlank

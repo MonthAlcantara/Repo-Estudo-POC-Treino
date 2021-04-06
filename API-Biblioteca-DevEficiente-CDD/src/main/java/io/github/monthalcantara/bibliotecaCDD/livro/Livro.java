@@ -24,10 +24,19 @@ public class Livro {
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
-    @ISBN(type = ISBN.Type.ISBN_10)
+   // @ISBN(type = ISBN.Type.ISBN_10)
     @NotBlank
     @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
+
+    @NotNull
+    @Column(name = "restrito", nullable = false)
+    private boolean restrito;
+
+    @NotNull
+    @Column(name = "disponivel", nullable = false)
+    private boolean disponivel;
+
 
     @Deprecated
     private Livro() {

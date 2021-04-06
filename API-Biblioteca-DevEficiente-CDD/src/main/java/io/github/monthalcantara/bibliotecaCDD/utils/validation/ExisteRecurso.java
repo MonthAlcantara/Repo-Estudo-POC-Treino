@@ -5,12 +5,12 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = ValorUnicoValidator.class)
+@Constraint(validatedBy = ExisteRecursoValidator.class)
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValorUnico {
+public @interface ExisteRecurso {
 
-    String message() default "{io.github.monthalcantara.bibliotecaCDD.utils.validation.annotations.valorunico}";
+    String message() default "{io.github.monthalcantara.bibliotecaCDD.utils.validation.annotations.existerecurso}";
 
     Class<?>[] groups() default {};
 
