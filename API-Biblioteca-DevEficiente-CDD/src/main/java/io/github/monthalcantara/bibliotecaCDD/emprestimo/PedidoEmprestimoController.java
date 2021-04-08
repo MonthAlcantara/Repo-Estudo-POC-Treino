@@ -1,8 +1,8 @@
 package io.github.monthalcantara.bibliotecaCDD.emprestimo;
 
 import io.github.monthalcantara.bibliotecaCDD.livro.LivroEmprestimoRequest;
+import io.github.monthalcantara.bibliotecaCDD.usuario.UsuarioResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +24,8 @@ public class PedidoEmprestimoController {
     @PostMapping
     public ResponseEntity solicitaEmprestimo(@Valid @RequestBody PedidoEmprestimo pedidoEmprestimo) {
 
+        UsuarioResponse usuarioResponse = solicitacaoEmprestimoService.solicitaEmprestimo(pedidoEmprestimo.getIdUsuario(), pedidoEmprestimo.getLivros());
 
-
-        solicitacaoEmprestimoService.solicitaEmprestimo(pedidoEmprestimo.getIdUsuario(), pedidoEmprestimo.getLivros());
-
-        return ResponseEntity.ok(pedidoEmprestimo.getLivros().stream().map(LivroEmprestimoRequest::toString).collect(Collectors.toList()));
+        return ResponseEntity.ok(usuarioResponse);
     }
 }

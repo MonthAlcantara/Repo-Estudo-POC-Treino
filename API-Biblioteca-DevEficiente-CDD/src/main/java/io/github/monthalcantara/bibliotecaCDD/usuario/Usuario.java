@@ -23,7 +23,7 @@ public class Usuario {
     private Usuario() {
     }
 
-    public Usuario( @NotNull TipoUsuario tipoUsuario) {
+    public Usuario(@NotNull TipoUsuario tipoUsuario) {
         this.qtdLivrosEmprestados = 0;
         this.tipoUsuario = tipoUsuario;
     }
@@ -42,5 +42,13 @@ public class Usuario {
 
     public Integer getId() {
         return id;
+    }
+
+    public boolean podeSolicitarEmprestimo() {
+        return qtdLivrosEmprestados < 5;
+    }
+
+    public void setQtdLivrosEmprestados(int qtdLivrosEmprestados) {
+        this.qtdLivrosEmprestados = qtdLivrosEmprestados;
     }
 }

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "livro", indexes = @Index(columnList = "isbn", unique = true))
+@Table(name = "livro", indexes = {@Index(columnList = "isbn", unique = true), @Index(columnList = "restrito, disponivel" )})
 public class Livro {
 
     @Id
@@ -50,5 +50,33 @@ public class Livro {
 
     public LivroResponse toResponse() {
         return new LivroResponse(this.titulo, this.preco, this.isbn);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public boolean isRestrito() {
+        return restrito;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }

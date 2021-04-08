@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PedidoEmprestimo {
 
@@ -23,10 +22,9 @@ public class PedidoEmprestimo {
     @ExisteRecurso(fieldName = "id", domainClass = Usuario.class, message = "Não existe usuário com o id informado")
     private Integer idUsuario;
 
-    @NotEmpty
     @Size(max = 5)
     @JsonProperty(value = "livros")
-    @Valid
+  //  @Valid
     private Set<LivroEmprestimoRequest> livros = new HashSet<>();
 
     @Deprecated
