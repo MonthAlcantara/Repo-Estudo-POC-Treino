@@ -4,7 +4,6 @@ import io.github.monthalcantara.bibliotecaCDD.livro.Livro;
 import io.github.monthalcantara.bibliotecaCDD.livro.LivroEmprestimoRequest;
 import io.github.monthalcantara.bibliotecaCDD.usuario.TipoUsuario;
 import io.github.monthalcantara.bibliotecaCDD.usuario.Usuario;
-import io.github.monthalcantara.bibliotecaCDD.usuario.UsuarioResponse;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -23,8 +22,8 @@ public class SolicitacaoEmprestimoService {
     }
 
     @Transactional
-    public UsuarioResponse solicitaEmprestimo(Integer idUsuario, Set<LivroEmprestimoRequest> livros) {
-        Set<Livro> livrosEncontrados = buscaLivros(livros);
+    public Usuario solicitaEmprestimo(Integer idUsuario, Integer livro) {
+        Livro livroEncontrado = buscaLivro(livro);
         Usuario usuario = buscaUsuario(idUsuario);
 
 
@@ -32,18 +31,16 @@ public class SolicitacaoEmprestimoService {
         //pode pegar livro?
         //o livro está disponivel pra esse perfil?
         //
-        for(Livro livro : livrosEncontrados){
-            if(isLivroDisponivelParaUsuario(usuario,livro)){
-                livro.setDisponivel(false);
-                usuario.setQtdLivrosEmprestados(usuario.getQtdLivrosEmprestados() + 1);
-            }
-        }
-return new UsuarioResponse(usuario);
 
         //        Usuario usuario = manager.find(Usuario.class, idUsuario);
 //        livros.stream().map(
 //
 //        )
+        return null;
+    }
+
+    private Livro buscaLivro(Integer idLivro) {
+        return manager.find(Livro.class, idLivro);
     }
 
     private Usuario buscaUsuario(Integer idUsuario) {
