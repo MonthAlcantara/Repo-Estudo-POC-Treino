@@ -23,19 +23,13 @@ public class SolicitacaoEmprestimoService {
 
     @Transactional
     public Usuario solicitaEmprestimo(Integer idUsuario, Integer livro) {
-        Livro livroEncontrado = buscaLivro(livro);
         Usuario usuario = buscaUsuario(idUsuario);
+        Livro livroEncontrado = buscaLivro(livro);
 
+        if(usuario.podeSolicitarEmprestimo(livroEncontrado)){
 
-        // Qual perfil do usuario?
-        //pode pegar livro?
-        //o livro está disponivel pra esse perfil?
-        //
+        }
 
-        //        Usuario usuario = manager.find(Usuario.class, idUsuario);
-//        livros.stream().map(
-//
-//        )
         return null;
     }
 
@@ -54,18 +48,4 @@ public class SolicitacaoEmprestimoService {
                 .collect(Collectors.toSet());
     }
 
-    private boolean isLivroDisponivelParaUsuario(Usuario usuario, Livro livro){
-        TipoUsuario tipoUsuario = usuario.getTipoUsuario();
-
-        boolean restrito = livro.isRestrito();
-        boolean disponivel = livro.isDisponivel();
-
-        if(!usuario.podeSolicitarEmprestimo()){
-            return false;
-        }else if(TipoUsuario.PADRAO.equals(tipoUsuario)){
-            return disponivel && !restrito;
-        }else{
-            return disponivel;
-        }
-    }
 }

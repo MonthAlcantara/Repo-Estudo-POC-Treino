@@ -24,7 +24,6 @@ public class Livro {
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
 
-   // @ISBN(type = ISBN.Type.ISBN_10)
     @NotBlank
     @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;

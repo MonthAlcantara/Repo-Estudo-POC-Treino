@@ -12,14 +12,15 @@ import javax.validation.constraints.NotNull;
 public class PedidoEmprestimo {
 
     @NotNull
-    @JsonProperty(value = "usuario")
     @ExisteRecurso(fieldName = "id", domainClass = Usuario.class, message = "Não existe usuário com o id informado")
+    @JsonProperty(value = "usuario")
     private Integer idUsuario;
 
     @NotNull(message = "Necessario informar o id do livro")
     @ExisteRecurso(domainClass = Livro.class, fieldName = "id", message =  "Não existe livro com o id informado")
     @JsonProperty("livro")
     private Integer idLivro;
+
     @Deprecated
     private PedidoEmprestimo() {
     }

@@ -1,6 +1,8 @@
 package io.github.monthalcantara.bibliotecaCDD.usuario;
 
 
+import io.github.monthalcantara.bibliotecaCDD.livro.Livro;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -44,8 +46,11 @@ public class Usuario {
         return id;
     }
 
-    public boolean podeSolicitarEmprestimo() {
-        return qtdLivrosEmprestados < 5;
+    public boolean podeSolicitarEmprestimo(Livro livro) {
+        if(tipoUsuario.temLimiteEmprestimos()){
+        return qtdLivrosEmprestados < 5 && tipoUsuario.podeSolicitarNovoEmprestimo(livro);
+        }
+        return tipoUsuario.podeSolicitarNovoEmprestimo(livro);
     }
 
     public void setQtdLivrosEmprestados(int qtdLivrosEmprestados) {

@@ -1,5 +1,7 @@
 package io.github.monthalcantara.bibliotecaCDD.usuario;
 
+import io.github.monthalcantara.bibliotecaCDD.livro.Livro;
+
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +21,8 @@ public enum TipoUsuario {
         }
 
         @Override
-        public Boolean podePegarRestritos() {
-            return false;
+        public Boolean podeSolicitarNovoEmprestimo(Livro livro) {
+            return !livro.isRestrito() && livro.isDisponivel();
         }
     }, PESQUISADOR("pesquisador"){
         @Override
@@ -34,8 +36,8 @@ public enum TipoUsuario {
         }
 
         @Override
-        public Boolean podePegarRestritos() {
-            return true;
+        public Boolean podeSolicitarNovoEmprestimo(Livro livro) {
+            return livro.isDisponivel();
         }
     };
 
@@ -73,6 +75,6 @@ public enum TipoUsuario {
     }
     public abstract Boolean precisaDefinirPrazo();
     public abstract Boolean temLimiteEmprestimos();
-    public abstract Boolean podePegarRestritos();
+    public abstract Boolean podeSolicitarNovoEmprestimo(Livro livro);
 
 }
