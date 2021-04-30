@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RequestMapping("v1/emprestimos")
 public class PedidoEmprestimoController {
 
-    private SolicitacaoEmprestimoService solicitacaoEmprestimoService;
+    private final SolicitacaoEmprestimoService solicitacaoEmprestimoService;
 
     public PedidoEmprestimoController(SolicitacaoEmprestimoService solicitacaoEmprestimoService) {
         this.solicitacaoEmprestimoService = solicitacaoEmprestimoService;

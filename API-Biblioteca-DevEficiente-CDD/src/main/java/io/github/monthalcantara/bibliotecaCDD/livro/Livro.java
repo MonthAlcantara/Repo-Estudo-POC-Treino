@@ -1,15 +1,12 @@
 package io.github.monthalcantara.bibliotecaCDD.livro;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.ISBN;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "livro", indexes = {@Index(columnList = "isbn", unique = true), @Index(columnList = "restrito, disponivel" )})
+@Table(name = "livro", indexes = {@Index(columnList = "isbn", unique = true), @Index(columnList = "restrito, disponivel")})
 public class Livro {
 
     @Id

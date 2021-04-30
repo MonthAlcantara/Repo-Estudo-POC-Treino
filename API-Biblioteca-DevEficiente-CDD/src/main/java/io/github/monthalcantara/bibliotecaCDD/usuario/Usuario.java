@@ -22,7 +22,7 @@ public class Usuario {
     private int qtdLivrosEmprestados;
 
     @Deprecated
-    private Usuario() {
+    public Usuario() {
     }
 
     public Usuario(@NotNull TipoUsuario tipoUsuario) {
@@ -47,8 +47,8 @@ public class Usuario {
     }
 
     public boolean podeSolicitarEmprestimo(Livro livro) {
-        if(tipoUsuario.temLimiteEmprestimos()){
-        return qtdLivrosEmprestados < 5 && tipoUsuario.podeSolicitarNovoEmprestimo(livro);
+        if (tipoUsuario.temLimiteEmprestimos()) {
+            return qtdLivrosEmprestados < 5 && tipoUsuario.podeSolicitarNovoEmprestimo(livro);
         }
         return tipoUsuario.podeSolicitarNovoEmprestimo(livro);
     }

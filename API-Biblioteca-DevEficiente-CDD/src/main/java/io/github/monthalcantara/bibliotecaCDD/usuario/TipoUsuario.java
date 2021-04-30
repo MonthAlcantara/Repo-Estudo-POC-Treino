@@ -41,7 +41,7 @@ public enum TipoUsuario {
         }
     };
 
-    private String descricao;
+    private final String descricao;
 
     private static final Map<String, TipoUsuario> mapString = new HashMap<>();
 
