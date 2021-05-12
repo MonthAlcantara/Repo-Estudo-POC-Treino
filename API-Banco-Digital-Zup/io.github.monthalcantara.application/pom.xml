@@ -6,10 +6,25 @@
         <artifactId>bancodigital</artifactId>
         <groupId>io.github.monthalcantara</groupId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>io.github.monthalcantara.application</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>io.github.monthalcantara</groupId>
+            <artifactId>io.github.monthalcantara.cadastro</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>io.github.monthalcantara.cliente</module>
+		<module>io.github.monthalcantara.cadastro</module>
 		<module>io.github.monthalcantara.core</module>
 		<module>io.github.monthalcantara.domain</module>
 		<module>io.github.monthalcantara.repository</module>
 		<module>io.github.monthalcantara.application</module>
-		<module>io.github.monthalcantara.repository</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -24,8 +23,40 @@
 	<description>Treino com foco nas tecnologias usadas no trabalho</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud.version>Hoxton.SR11</spring-cloud.version>
 	</properties>
+	<dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>io.github.monthalcantara</groupId>
+			<artifactId>io.github.monthalcantara.application</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.monthalcantara</groupId>
+			<artifactId>io.github.monthalcantara.cadastro</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.monthalcantara</groupId>
+			<artifactId>io.github.monthalcantara.core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.monthalcantara</groupId>
+			<artifactId>io.github.monthalcantara.domain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.monthalcantara</groupId>
+			<artifactId>io.github.monthalcantara.repository</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -35,11 +66,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-aws</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -57,18 +83,6 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-<!--	<dependencyManagement>-->
-<!--		<dependencies>-->
-<!--			<dependency>-->
-<!--				<groupId>org.springframework.cloud</groupId>-->
-<!--				<artifactId>spring-cloud-dependencies</artifactId>-->
-<!--				<version>${spring-cloud.version}</version>-->
-<!--				<type>pom</type>-->
-<!--				<scope>import</scope>-->
-<!--			</dependency>-->
-<!--		</dependencies>-->
-<!--	</dependencyManagement>-->
-
 	<build>
 		<plugins>
 			<plugin>
