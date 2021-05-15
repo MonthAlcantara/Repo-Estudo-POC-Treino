@@ -1,13 +1,14 @@
-package io.github.monthalcantara.cadastro.dto;
+package io.github.monthalcantara.cadastro.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
-public class NovoClienteRequest {
+public class ClienteResponse {
 
     private String nome;
 

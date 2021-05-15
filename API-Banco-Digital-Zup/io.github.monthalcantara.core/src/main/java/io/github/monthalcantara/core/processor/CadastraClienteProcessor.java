@@ -1,7 +1,7 @@
 package io.github.monthalcantara.core.processor;
 
-public interface CadastraClienteProcessor<R> {
+import io.github.monthalcantara.core.command.Command;
+import io.github.monthalcantara.domain.cliente.Cliente;
 
-   public R process(R r);
-
+public interface CadastraClienteProcessor extends Command<Cliente> {
 }
