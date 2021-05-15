@@ -1,4 +1,4 @@
-package io.github.monthalcantara.core.processor;
+package io.github.monthalcantara.cadastro.processor;
 
 import io.github.monthalcantara.core.command.Command;
 import io.github.monthalcantara.domain.cliente.Cliente;

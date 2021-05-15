@@ -10,5 +10,5 @@ public interface ClienteMapper {
 
     Cliente mapFrom(NovoClienteRequest request);
 
-    ClienteResponse mapFromCliente(Cliente cliente);
+    ClienteResponse mapFrom(Cliente cliente);
 }

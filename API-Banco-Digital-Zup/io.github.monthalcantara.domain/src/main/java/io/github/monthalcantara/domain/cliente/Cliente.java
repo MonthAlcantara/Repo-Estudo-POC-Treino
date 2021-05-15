@@ -27,5 +27,9 @@ public class Cliente implements Visitable<Cliente> {
     public void accept(Visitor<Cliente, ?> element) {
        element.visit(this);
     }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
 }
 
