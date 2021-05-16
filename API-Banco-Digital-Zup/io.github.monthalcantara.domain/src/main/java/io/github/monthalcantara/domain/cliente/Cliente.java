@@ -1,7 +1,7 @@
 package io.github.monthalcantara.domain.cliente;
 
-import io.github.monthalcantara.core.visitor.Visitable;
-import io.github.monthalcantara.core.visitor.Visitor;
+import io.github.monthalcantara.domain.visitor.Visitable;
+import io.github.monthalcantara.domain.visitor.Visitor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

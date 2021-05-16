@@ -7,8 +7,8 @@
 		<module>io.github.monthalcantara.cadastro</module>
 		<module>io.github.monthalcantara.core</module>
 		<module>io.github.monthalcantara.domain</module>
-		<module>io.github.monthalcantara.repository</module>
 		<module>io.github.monthalcantara.application</module>
+		<module>io.github.monthalcantara.repository</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -84,6 +84,21 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok-mapstruct-binding</artifactId>
 			<version>${version.mapstruct-lombok}</version>
+		</dependency>
+		<!--		Sdk do Java para comunicação  com Dynamo		-->
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.831</version>
+		</dependency>
+
+		<!--		Modulo Spring para trabalho com Dynamo		-->
+
+		<dependency>
+			<groupId>com.github.derjust</groupId>
+			<artifactId>spring-data-dynamodb</artifactId>
+			<version>5.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

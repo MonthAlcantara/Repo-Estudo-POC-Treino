@@ -1,4 +1,4 @@
-package io.github.monthalcantara.core.visitor;
+package io.github.monthalcantara.domain.visitor;
 
 public interface Visitable<T> {
 

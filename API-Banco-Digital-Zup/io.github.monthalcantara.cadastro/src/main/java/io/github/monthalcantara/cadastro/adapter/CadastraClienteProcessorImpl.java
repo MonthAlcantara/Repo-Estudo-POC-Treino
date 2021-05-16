@@ -1,20 +1,22 @@
-package io.github.monthalcantara.cadastro.processor;
+package io.github.monthalcantara.cadastro.adapter;
 
-import io.github.monthalcantara.cadastro.visitor.AdicionadaDataCriacaoVisitor;
+import io.github.monthalcantara.cadastro.visitor.AdicionaDataCriacaoVisitor;
 import io.github.monthalcantara.core.command.CommandContext;
+import io.github.monthalcantara.core.persistence.ClientePersistence;
 import io.github.monthalcantara.domain.cliente.Cliente;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class CadastraClienteProcessorImpl implements CadastraClienteProcessor {
 
-    private final AdicionadaDataCriacaoVisitor adicionadaDataCriacaoVisitor;
+    @Autowired
+    private AdicionaDataCriacaoVisitor adicionaDataCriacaoVisitor;
 
-    public CadastraClienteProcessorImpl(AdicionadaDataCriacaoVisitor adicionadaDataCriacaoVisitor) {
-        this.adicionadaDataCriacaoVisitor = adicionadaDataCriacaoVisitor;
-    }
+    @Autowired
+    private ClientePersistence clientePersistence;
 
     @Override
     public Cliente process(CommandContext commandContext) {
@@ -25,9 +27,11 @@ public class CadastraClienteProcessorImpl implements CadastraClienteProcessor {
 
         log.info("Recuperado valor do Command Context");
 
-        cliente.accept(adicionadaDataCriacaoVisitor);
+        cliente.accept(adicionaDataCriacaoVisitor);
 
         log.info("Finalizado processo de cadastro do cliente");
+
+        clientePersistence.save(cliente);
 
         return cliente;
     }

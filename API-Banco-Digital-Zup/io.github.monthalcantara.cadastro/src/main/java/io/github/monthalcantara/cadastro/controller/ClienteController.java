@@ -4,7 +4,7 @@ import io.github.monthalcantara.cadastro.dto.request.NovoClienteRequest;
 import io.github.monthalcantara.cadastro.dto.response.ClienteResponse;
 import io.github.monthalcantara.cadastro.mapper.ClienteMapper;
 import io.github.monthalcantara.core.command.CommandContext;
-import io.github.monthalcantara.cadastro.processor.CadastraClienteProcessor;
+import io.github.monthalcantara.cadastro.adapter.CadastraClienteProcessor;
 import io.github.monthalcantara.domain.cliente.Cliente;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
