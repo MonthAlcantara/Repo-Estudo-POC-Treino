@@ -1,6 +1,6 @@
-package io.github.monthalcanta.repository.mapper;
+package io.github.monthalcantara.repository.mapper;
 
-import io.github.monthalcanta.repository.model.ClienteEntity;
+import io.github.monthalcantara.repository.model.ClienteEntity;
 import io.github.monthalcantara.domain.cliente.Cliente;
 import org.mapstruct.Mapper;
 

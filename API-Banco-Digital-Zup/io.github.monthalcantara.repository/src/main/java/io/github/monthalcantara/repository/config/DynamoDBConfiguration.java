@@ -1,4 +1,4 @@
-package io.github.monthalcanta.repository.config;
+package io.github.monthalcantara.repository.config;
 
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;

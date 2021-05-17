@@ -1,4 +1,4 @@
-package io.github.monthalcanta.repository.model;
+package io.github.monthalcantara.repository.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;

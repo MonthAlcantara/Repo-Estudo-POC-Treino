@@ -3,7 +3,7 @@ package io.github.monthalcantara.cadastro.adapter;
 import io.github.monthalcantara.cadastro.visitor.AdicionaDataCriacaoVisitor;
 import io.github.monthalcantara.core.command.Command;
 import io.github.monthalcantara.core.command.CommandContext;
-import io.github.monthalcanta.repository.adapter.ClientePersistence;
+import io.github.monthalcantara.repository.adapter.ClientePersistence;
 import io.github.monthalcantara.domain.cliente.Cliente;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

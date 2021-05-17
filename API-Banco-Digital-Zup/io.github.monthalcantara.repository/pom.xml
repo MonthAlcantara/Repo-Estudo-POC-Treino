@@ -16,10 +16,4 @@
             <artifactId>io.github.monthalcantara.domain</artifactId>
         </dependency>
     </dependencies>
-    <!--    <dependencies>-->
-<!--        <dependency>-->
-<!--            <groupId>io.github.monthalcantara</groupId>-->
-<!--            <artifactId>io.github.monthalcantara.core</artifactId>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
 </project>
