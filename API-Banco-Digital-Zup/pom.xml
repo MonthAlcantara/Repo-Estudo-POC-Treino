@@ -3,13 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
-	<modules>
-		<module>io.github.monthalcantara.cadastro</module>
-		<module>io.github.monthalcantara.core</module>
-		<module>io.github.monthalcantara.domain</module>
-		<module>io.github.monthalcantara.application</module>
-		<module>io.github.monthalcantara.repository</module>
-	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -27,6 +20,13 @@
 		<version.mapstruct>1.4.2.Final</version.mapstruct>
 		<version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
 	</properties>
+	<modules>
+		<module>io.github.monthalcantara.cadastro</module>
+		<module>io.github.monthalcantara.core</module>
+		<module>io.github.monthalcantara.domain</module>
+		<module>io.github.monthalcantara.application</module>
+		<module>io.github.monthalcantara.repository</module>
+	</modules>
 	<dependencyManagement>
 
 	<dependencies>
@@ -85,6 +85,7 @@
 			<artifactId>lombok-mapstruct-binding</artifactId>
 			<version>${version.mapstruct-lombok}</version>
 		</dependency>
+
 		<!--		Sdk do Java para comunicação  com Dynamo		-->
 
 		<dependency>
@@ -100,6 +101,11 @@
 			<artifactId>spring-data-dynamodb</artifactId>
 			<version>5.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
