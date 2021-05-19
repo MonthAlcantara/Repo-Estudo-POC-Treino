@@ -15,7 +15,7 @@ public class VpcStack extends Stack {
 
         /*
          * Para criar uma vpc eu preciso de um escopo, que seria a classe onde eu estou 'this'
-         * e mais um nome para identificar o servico
+         * e mais um nome para identificar o servico.
          */
        Vpc.Builder.create(this, "Vpc01")
                //Quantidade maximas de zonas de disponibilidades que minha vpc atuará
