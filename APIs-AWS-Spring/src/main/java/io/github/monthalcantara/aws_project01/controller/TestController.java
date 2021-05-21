@@ -6,13 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/dogs")
+@RequestMapping("/api/test")
 public class TestController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    @GetMapping
-    public ResponseEntity testeController(@RequestParam String teste){
-        return ResponseEntity.ok(teste);
+    @GetMapping("/dog/{name}")
+    public ResponseEntity testeController(@PathVariable String name){
+        return ResponseEntity.ok(name);
+    }
+
+    @GetMapping("/dog/color")
+    public ResponseEntity testeController(){
+        return ResponseEntity.ok("Endpoint de teste");
     }
 
 }

@@ -31,7 +31,7 @@ sourceCompatibility = '11'
 bootJar{
 	baseName = 'projeto_aws_01'
 //	Versao que eu quero gerar da minha imagem
-	version = '1.0.0'
+	version = '1.2.0'
 	mainClassName = "io.github.monthalcantara.aws_project01.AwsProject01Application"
 }
 
