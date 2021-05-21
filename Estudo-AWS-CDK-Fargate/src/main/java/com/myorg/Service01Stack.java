@@ -48,7 +48,7 @@ public class Service01Stack extends Stack {
                                 //Definindo um nome para o container
                                 .containerName("aws_project01")
                                 //Informando onde ele achará a imagem (nome registrado da imagem no dockerHub)
-                                .image(ContainerImage.fromRegistry("montivaljunior/curso_aws_project01:1.0.0"))
+                                .image(ContainerImage.fromRegistry("montivaljunior/curso_aws_project01:1.2.0"))
                                 //Porta do container
                                 .containerPort(8080)
                                 //Onde os logs da aplicação irão aparecer?
