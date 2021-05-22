@@ -10,7 +10,7 @@ public class Product {
     private Long id;
 
     @Column(nullable = false, length = 32)
-    private String nome;
+    private String name;
 
     @Column(nullable = false, length = 24, unique = true)
     private String code;
@@ -21,14 +21,30 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String nome, String code, float price) {
+    public Product(Long id, String name, String code, float price) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.code = code;
         this.price = price;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public float getPrice() {
+        return price;
     }
 }

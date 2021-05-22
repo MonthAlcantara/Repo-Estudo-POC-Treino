@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -27,38 +26,102 @@ public class ProductController {
 
     @GetMapping("/{idProduto}")
     public ResponseEntity findById(@PathVariable Long idProduto) {
-        Optional<Product> product = Optional.empty();
-        return ResponseEntity.ok(
-                product.orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"))
-        );
+
+        logger.info("Requisição de busca de produto pelo id Recebida");
+
+        Optional<Product> product = productRepository.findById(idProduto);
+
+        logger.info("Busca realizada com sucesso");
+
+        if (product.isEmpty()) {
+
+        logger.error("A busca de produto pelo id não retornou nenhum resultado");
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        logger.info("A busca pelo Id encontrou um produto e será retornado");
+
+        return ResponseEntity.ok(product.get());
+    }
+
+    @GetMapping("/code")
+    public ResponseEntity findByCode(@RequestParam String code) {
+
+        logger.info("Requisição de busca de produto pelo code recebida");
+
+        Optional<Product> productOptional = productRepository.findByCode(code);
+
+        logger.info("Busca realizada com sucesso");
+
+        if (productOptional.isEmpty()) {
+
+            logger.error("A busca de produto pelo code não retornou nenhum resultado");
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        logger.info("A busca pelo code encontrou um produto e será retornado");
+
+        return ResponseEntity.ok(productOptional.get());
     }
 
     @PostMapping
-    public ResponseEntity create(@PathVariable Product product) {
+    public ResponseEntity create(@RequestBody Product product) {
+
+        logger.info("Requisição para criação de produto recebida");
+
         Product productSave = productRepository.save(product);
+
+        logger.info("Produto salvo com sucesso");
+
         return new ResponseEntity(productSave, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{idProduto}")
+    @PutMapping("/{idProduct}")
     public ResponseEntity update(@PathVariable Long idProduct, @RequestBody Product product) {
+
+        logger.info("Requisição para atualização de produto recebida");
+
         Optional<Product> productOptional = productRepository.findById(idProduct);
+
         if (productOptional.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+
+            logger.error("A busca de produto pelo id não retornou nenhum resultado");
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+        logger.info("A busca pelo Id encontrou um produtoo");
+
         product.setId(idProduct);
         Product productSave = productRepository.save(product);
+
+        logger.info("Produto atualizado com sucesso");
 
         return ResponseEntity.ok(productSave);
     }
 
-    @DeleteMapping("/{idProduto}")
+    @DeleteMapping("/{idProduct}")
     public ResponseEntity delete(@PathVariable Long idProduct) {
+
+        logger.info("Requisição para deletar produto recebida");
+
         Optional<Product> productOptional = productRepository.findById(idProduct);
+
         if (productOptional.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+
+            logger.error("A busca de produto pelo id não retornou nenhum resultado");
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+        logger.info("A busca pelo Id encontrou um produtoo");
+
         productRepository.deleteById(idProduct);
+
+        logger.info("Produto deletado com sucesso");
+
         return ResponseEntity.noContent().build();
     }
 
