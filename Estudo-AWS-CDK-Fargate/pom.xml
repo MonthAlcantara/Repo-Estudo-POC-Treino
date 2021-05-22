@@ -60,7 +60,12 @@
             <artifactId>ecs-patterns</artifactId>
             <version>${cdk.version}</version>
         </dependency>
-
+        <!-- Dependencia para criação de RDS -->
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>rds</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
         <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>

@@ -21,12 +21,17 @@ public class CursoAwsCdkApp {
         //(Como eu preciso da VPC pra criar o cluster eu tenho uma dependencia, preciso declarar isso)
         cluster.addDependency(vpc);
 
+        //Criando a stack de rds e dizendo que ela depende da VPC
+        RdsStack rdsStack = new RdsStack(app, "Rds", vpc.getVpc());
+        rdsStack.addDependency(vpc);
+
         /*
          * Como o Cluster será o mesmo criado no passo anterior e o mesmo ja está registrado num VPC, por isso na classe ClusterStack
          * eu exponho o cluster criada para poder declará-la aqui
          * */
         Service01Stack service01Stack = new Service01Stack(app, "Service01", cluster.getCluster());
         service01Stack.addDependency(cluster);
+        service01Stack.addDependency(rdsStack);
 
         app.synth();
     }

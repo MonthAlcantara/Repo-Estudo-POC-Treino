@@ -8,6 +8,9 @@ import software.amazon.awscdk.services.ecs.patterns.ApplicationLoadBalancedTaskI
 import software.amazon.awscdk.services.elasticloadbalancingv2.HealthCheck;
 import software.amazon.awscdk.services.logs.LogGroup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  *   Aqui faz sentido colocar tudo que for referente ao mesmo assunto numa mesma stack
  * LoadBalance, Service...
@@ -20,6 +23,18 @@ public class Service01Stack extends Stack {
 
     public Service01Stack(final Construct scope, final String id, final StackProps props, Cluster cluster) {
         super(scope, id, props);
+
+        /**
+         * Capturando as variaveis de ambiente para setar na aplicação concatenando com os valores informados no
+         * stack do rds
+         * Fn.importValue(Passando o nome do value) para importar os valores dessas variaveis
+         */
+        Map<String, String> envVariables = new HashMap<>();
+        envVariables.put("SPRING_DATASOURCE_URL", "jdbc:mariadb://" + Fn.importValue("rds-endpoint")
+                + ":3306/aws_project01?createDatabaseIfNotExist=true");
+        envVariables.put("SPRING_DATASOURCE_USERNAME", "admin");
+        envVariables.put("SPRING_DATASOURCE_PASSWORD", Fn.importValue("rds-password"));
+
 
         //LoadBalance do tipo fargate
         /*
@@ -62,6 +77,10 @@ public class Service01Stack extends Stack {
                                         //Dentro dos grupos de logs terão os strems para atualizar esse grupo
                                         .streamPrefix("Service01")
                                         .build()))
+                                /**
+                                * Aqui eu seto o hashmap com as variaveis de ambientes setadas
+                                * */
+                                .environment(envVariables)
                                 .build())
                 //Tornar o loadBalancer publico com um DNS para ser acessado de fora da VPC
                 .publicLoadBalancer(true)
