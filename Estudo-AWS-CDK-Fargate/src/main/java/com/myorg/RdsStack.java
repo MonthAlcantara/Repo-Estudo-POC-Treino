@@ -65,9 +65,11 @@ public class RdsStack extends Stack {
                         .build())
                 .build();
 
-        //Exportar parametros para poder usar em outra Stack por exemplo o endpoint e a senha do RDS
-//é a forma do CDK de fazer isso no CfnParametereu seto entrada e no CfnOutput eu seto saída
-        //Esses valores serão usados na classe de Service01Stack, pois ele é quem vai acessar o banco
+        /*
+        Exportar parametros para poder usar em outra Stack por exemplo o endpoint e a senha do RDS
+        é a forma do CDK de fazer isso no CfnParametereu seto entrada e no CfnOutput eu seto saída.
+        Esses valores serão usados na classe de Service01Stack, pois ele é quem vai acessar o banco
+        */
         CfnOutput.Builder.create(this, "rds-endpoint")
                 .exportName("rds-endpoint")
                 .value(databaseInstance.getDbInstanceEndpointAddress())
