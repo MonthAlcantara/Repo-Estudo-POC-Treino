@@ -20,10 +20,15 @@ import javax.jms.Session;
 @EnableJms //Essa anotação habilita o JMS na aplicação
 @Profile("local")
 public class JmsConfigLocal {
+
     private SQSConnectionFactory sqsConnectionFactory;
 
     @Bean
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+
+        //Apontar para um endpoint, que vai ser o nde o localstack vai rodar
+        // Falar a região
+        //Usar credenciais default
         sqsConnectionFactory = new SQSConnectionFactory(
                 new ProviderConfiguration(),
                 AmazonSQSClient.builder()

@@ -13,11 +13,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+
 @Configuration
 @Profile("local")
 public class SqsCreateSubscribe {
 
+    //Criação do Client para comunicação com SQS
     public SqsCreateSubscribe(AmazonSNS snsClient, @Qualifier("productEventsTopic") Topic productEventsTopic) {
+       //Mesma ideia da config do SNS
         AmazonSQS sqsClient = AmazonSQSClient.builder()
                 .withEndpointConfiguration(
                         new AwsClientBuilder.EndpointConfiguration("http://localhost:4566",
@@ -25,9 +28,11 @@ public class SqsCreateSubscribe {
                 .withCredentials(new DefaultAWSCredentialsProviderChain())
                 .build();
 
+        //Criando a fila product-events e pegando a url
         String productEventsQueueUrl = sqsClient.createQueue(
                 new CreateQueueRequest("product-events")).getQueueUrl();
 
+        //Escrevendo a fila no tópico
         Topics.subscribeQueue(snsClient, sqsClient, productEventsTopic.getTopicArn(), productEventsQueueUrl);
     }
 }
