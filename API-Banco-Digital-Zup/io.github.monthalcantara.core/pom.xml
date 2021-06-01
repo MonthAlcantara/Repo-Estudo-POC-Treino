@@ -15,10 +15,6 @@
             <groupId>io.github.monthalcantara</groupId>
             <artifactId>io.github.monthalcantara.domain</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.github.monthalcantara</groupId>
-            <artifactId>io.github.monthalcantara.repository</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
