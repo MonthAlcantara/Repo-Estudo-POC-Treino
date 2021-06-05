@@ -86,33 +86,33 @@
 			<version>${version.mapstruct-lombok}</version>
 		</dependency>
 
-		<!--		Sdk do Java para comunicação  com Dynamo		-->
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-dynamodb</artifactId>
-			<version>1.11.831</version>
-		</dependency>
+<!--		&lt;!&ndash;		Sdk do Java para comunicação  com Dynamo		&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>com.amazonaws</groupId>-->
+<!--			<artifactId>aws-java-sdk-dynamodb</artifactId>-->
+<!--			<version>1.11.831</version>-->
+<!--		</dependency>-->
 
-		<!--		Modulo Spring para trabalho com Dynamo		-->
+<!--		&lt;!&ndash;		Modulo Spring para trabalho com Dynamo		&ndash;&gt;-->
 
-		<dependency>
-			<groupId>com.github.derjust</groupId>
-			<artifactId>spring-data-dynamodb</artifactId>
-			<version>5.1.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.github.derjust</groupId>-->
+<!--			<artifactId>spring-data-dynamodb</artifactId>-->
+<!--			<version>5.1.0</version>-->
+<!--		</dependency>-->
 
-		<!--		Sdk do Java para comunicação  com SQS		-->
+<!--		&lt;!&ndash;		Sdk do Java para comunicação  com SQS		&ndash;&gt;-->
 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws</artifactId>
-			<version>2.2.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-aws-messaging</artifactId>
-			<version>2.2.6.RELEASE</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-aws</artifactId>-->
+<!--			<version>2.2.6.RELEASE</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-aws-messaging</artifactId>-->
+<!--			<version>2.2.6.RELEASE</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -29,6 +29,10 @@
             <groupId>io.github.monthalcantara</groupId>
             <artifactId>io.github.monthalcantara.repository</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.monthalcantara</groupId>
+            <artifactId>io.github.monthalcantara.messaging</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
