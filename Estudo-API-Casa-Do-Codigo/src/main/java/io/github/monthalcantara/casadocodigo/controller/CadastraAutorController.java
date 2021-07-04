@@ -21,11 +21,11 @@ import static io.github.monthalcantara.casadocodigo.mapper.AutorMapper.MAPPER;
 @RequestMapping("v1/autores")
 public class CadastraAutorController {
 
-    private final CadastraAutorCommandProcessor processor;
+    private final CadastraAutorCommandProcessor cadastraAutorProcessor;
 
     @Autowired
-    public CadastraAutorController(CadastraAutorCommandProcessor processor) {
-        this.processor = processor;
+    public CadastraAutorController(CadastraAutorCommandProcessor cadastraAutorProcessor) {
+        this.cadastraAutorProcessor = cadastraAutorProcessor;
     }
 
     @PostMapping
@@ -37,7 +37,7 @@ public class CadastraAutorController {
 
         log.info("Convertido request para Autor");
 
-        Autor autorProcessado = processor.process(autor);
+        Autor autorProcessado = cadastraAutorProcessor.process(autor);
 
         log.info("Finalizado processamento de autor");
 
