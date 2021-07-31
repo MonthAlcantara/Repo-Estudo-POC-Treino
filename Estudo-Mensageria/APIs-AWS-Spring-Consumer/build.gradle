@@ -1,0 +1,69 @@
+buildscript{
+	ext{
+		springBootVersion = '2.4.4'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.22.1')
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+//	Plugin do Docker
+	id 'com.palantir.docker' version '0.22.1'
+}
+
+group = 'io.github.monthalcantara'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+//Informar o nome do repositório ao qual eu vou subir a minha imagem
+bootJar{
+	baseName = 'projeto_aws_02'
+//	Versao que eu quero gerar da minha imagem
+	version = '1.0.0'
+	mainClassName = "io.github.monthalcantara.aws_project02.AwsProject02Application"
+}
+
+
+//Tarefa para o gradle gerar a imagem
+task unpack(type: Copy) {
+	dependsOn bootJar
+	from(zipTree(tasks.bootJar.outputs.files.singleFile))
+	into("build/dependency")
+}
+docker {
+	name "${project.group}/${bootJar.baseName}"
+	tags "${bootJar.version}"
+	copySpec.from(tasks.unpack.outputs).into("dependency")
+	buildArgs(['DEPENDENCY': "dependency"])
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+// Biblioteca SQS
+	compile group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.887'
+	//Java Messenger Service. Vai ficar verificando a fila e vendo se existe nova mensagem
+	compile group: 'org.springframework', name: 'spring-jms', version: '5.2.9.RELEASE'
+	compile group: 'com.amazonaws', name: 'amazon-sqs-java-messaging-lib', version: '1.0.8'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
