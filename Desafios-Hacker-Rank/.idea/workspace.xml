@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ffa33bb-993d-4661-b4f1-918a80830c85" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/src/test/java/io/github/monthalcantara/casadocodigo/aceitacao/CasaDoCodigoCucumberRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/src/test/java/io/github/monthalcantara/casadocodigo/aceitacao/CasaDoCodigoCucumberRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/src/test/java/io/github/monthalcantara/casadocodigo/aceitacao/steps/Cadastrando_autor_steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Estudo-API-Casa-Do-Codigo/src/test/java/io/github/monthalcantara/casadocodigo/aceitacao/steps/Cadastrando_autor_steps.java" afterDir="false" />
-    </list>
+    <list default="true" id="f535be45-60b2-4f2b-9f38-fdc6418215d6" name="Default Changelist" comment="Desafio 01 Regex" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1vxiWSuCVWxHaBTeWBYs9s3dIWk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1vxid8OBQHGEavHyGrTuhoZQGPk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -23,17 +31,75 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.TesteRegex">
+    <configuration name="MyRegex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.monthalcantara.desafio01.MyRegex" />
+      <module name="desafios-hackerrank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.monthalcantara.desafio01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TesteRegex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.monthalcantara.desafio01.TesteRegex" />
+      <module name="desafios-hackerrank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.monthalcantara.desafio01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TesteRegex" />
+        <item itemvalue="Application.MyRegex" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8ffa33bb-993d-4661-b4f1-918a80830c85" name="Default Changelist" comment="" />
-      <created>1627510171775</created>
+      <changelist id="f535be45-60b2-4f2b-9f38-fdc6418215d6" name="Default Changelist" comment="" />
+      <created>1627510228446</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1627510171775</updated>
+      <updated>1627510228446</updated>
     </task>
+    <task id="LOCAL-00001" summary="Desafio 01 Regex">
+      <created>1627512120196</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627512120196</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Desafio 01 Regex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Desafio 01 Regex" />
   </component>
 </project>
