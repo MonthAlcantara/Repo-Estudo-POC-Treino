@@ -5,7 +5,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class Principal {
          * Adicionando um novo documento (ítem) na collection (tabela)
          * com o método append eu consigo ir colocando mais atributos
          * */
-        collection.insertOne(new Document("nome", "Teste")
+        collection.insertOne(new Document("nome", "Fulano")
                         .append("dataNascimento", new Date(2022, 1, 5))
                         // Para inserir uma relação é possivel criar um novo document filho dentro do Document pai
                         .append("curso", new Document("Curso", "Historia"))
@@ -36,6 +35,7 @@ public class Principal {
 //                Para lista de objetos
                         .append("habilidades", List.of(new Document("Inglês", "avançado"), new Document("Italiano", "Basico")))
         );
+
         //Fechando a conexão
         client.close();
     }
