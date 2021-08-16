@@ -3,7 +3,11 @@ package io.github.monthalcantara.poc.springretry.service;
 import io.github.monthalcantara.poc.springretry.dto.EnderecoResponse;
 import io.github.monthalcantara.poc.springretry.dto.EnderecoResponseDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 
@@ -14,29 +18,32 @@ import java.util.Map;
 @Slf4j
 @Service
 public class CepService {
-    private final String url = "http://viacep.com.br/ws/{cep}/json";
-    final RestTemplate restTemplate = new RestTemplate();
+    private final String url;
+    private final RestTemplate restTemplate;
 
-    public EnderecoResponseDto getEnderecoResponseDto(String cep) {
+    public CepService() {
+        url = "http://viacep.com.br/ws/{cep}/json";
+        restTemplate = new RestTemplate();
+    }
 
-        try {
-            final Map<String, String> params = new HashMap<>();
-            params.put("cep", cep);
+    @Retryable(value = HttpClientErrorException.class, maxAttempts = 3, backoff = @Backoff(delayExpression = "100"))
+    public EnderecoResponseDto getEnderecoResponseDto(String cep) throws HttpClientErrorException {
 
-            final URI expanded = new UriTemplate(url).expand(params);
+        final Map<String, String> params = new HashMap<>();
+        params.put("cep", cep);
 
-            log.info("Iniciada chamada a api de Cep");
+        final URI expanded = new UriTemplate(url).expand(params);
 
-            final EnderecoResponse enderecoResponse = restTemplate.getForEntity(expanded.toString(), EnderecoResponse.class).getBody();
+        log.info("Iniciada chamada a api de Cep");
 
-            log.info("Consulta a API de Cep concluída com sucesso", enderecoResponse);
+        final ResponseEntity<EnderecoResponse> responseResponseEntity = restTemplate.getForEntity(expanded.toString(), EnderecoResponse.class);
+        final EnderecoResponse enderecoResponse = responseResponseEntity.getBody();
 
-            final EnderecoResponseDto enderecoResponseDto = enderecoResponse.toDto();
+        log.info("Consulta a API de Cep concluída com sucesso", enderecoResponse);
 
-            log.info("Conversão para objeto de saída realizada com sucesso", enderecoResponseDto);
-            return enderecoResponseDto;
-        } catch (Exception ex) {
-            return null;
-        }
+        final EnderecoResponseDto enderecoResponseDto = enderecoResponse.toDto();
+
+        log.info("Conversão para objeto de saída realizada com sucesso", enderecoResponseDto);
+        return enderecoResponseDto;
     }
 }
