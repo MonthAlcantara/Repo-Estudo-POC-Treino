@@ -1,9 +1,9 @@
-package io.github.monthalcantara.casadocodigo.controller
+package io.github.monthalcantara.casadocodigo.controller.autor
 
 import io.github.monthalcantara.casadocodigo.dto.request.NovoAutorRequest
 import io.github.monthalcantara.casadocodigo.dto.response.NovoAutorResponse
-import io.github.monthalcantara.casadocodigo.model.AutorEntity
 import io.github.monthalcantara.casadocodigo.repository.AutorRepository
+import io.github.monthalcantara.casadocodigo.service.CadastroAutorService
 import org.slf4j.LoggerFactory
 import org.springframework.hateoas.Link
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
@@ -17,7 +17,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/autores")
-class CadastroAutorController(val autorRepository: AutorRepository) {
+class CadastroAutorController(val cadastraAutorService: CadastroAutorService) {
 
     val log = LoggerFactory.getLogger(CadastroAutorController::class.java)
 
@@ -27,7 +27,7 @@ class CadastroAutorController(val autorRepository: AutorRepository) {
 
         log.info("Recebida solicitação para cadastro de novo autor")
 
-        val autorEntity = autorRepository.save(novoAutor.toEntity())
+        val autorEntity = cadastraAutorService.executa(novoAutor.toEntity())
 
         log.info("Realizado cadastro de novo autor")
 

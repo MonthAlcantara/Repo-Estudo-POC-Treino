@@ -1,7 +1,7 @@
-package io.github.monthalcantara.casadocodigo.controller.autor
+package io.github.monthalcantara.casadocodigo.controller.handler
 
-import io.github.monthalcantara.casadocodigo.controller.handler.Erro
 import io.github.monthalcantara.casadocodigo.dto.response.ErrorResponse
+import io.github.monthalcantara.casadocodigo.exception.CampoDuplicadoException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
@@ -23,6 +23,15 @@ class ExceptionHandlerController {
             error = HttpStatus.BAD_REQUEST.name
         )
         return ResponseEntity(errorResponse,HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(CampoDuplicadoException::class)
+    fun handlerCampoDuplicadoException(ex: CampoDuplicadoException): ErrorResponse {
+        return  ErrorResponse(
+            status = HttpStatus.BAD_REQUEST.value(),
+            messages = listOf(Erro(ex.campo, ex.mensagem)),
+            error = HttpStatus.BAD_REQUEST.name
+        )
     }
 }
 
