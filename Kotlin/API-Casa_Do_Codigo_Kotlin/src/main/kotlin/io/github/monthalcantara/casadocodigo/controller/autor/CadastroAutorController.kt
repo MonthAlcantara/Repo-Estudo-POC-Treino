@@ -1,8 +1,7 @@
 package io.github.monthalcantara.casadocodigo.controller.autor
 
-import io.github.monthalcantara.casadocodigo.dto.request.NovoAutorRequest
+import io.github.monthalcantara.casadocodigo.dto.request.autor.NovoAutorRequest
 import io.github.monthalcantara.casadocodigo.dto.response.NovoAutorResponse
-import io.github.monthalcantara.casadocodigo.repository.AutorRepository
 import io.github.monthalcantara.casadocodigo.service.CadastroAutorService
 import org.slf4j.LoggerFactory
 import org.springframework.hateoas.Link
@@ -31,7 +30,7 @@ class CadastroAutorController(val cadastraAutorService: CadastroAutorService) {
 
         log.info("Realizado cadastro de novo autor")
 
-        val link = geraLinkHateoas(autorEntity.id)
+        val link = geraLinkHateoas(autorEntity.id!!)
 
         log.info("Link Hateoas gerado para o id: ${autorEntity.id}")
 
