@@ -1,5 +1,6 @@
 package io.github.monthalcantara.casadocodigo.config
 
+import io.github.monthalcantara.casadocodigo.security.JWTLoginFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -11,41 +12,56 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @EnableWebSecurity
 @Configuration
-class SecurityConfiguration(private val userDetailsService: UserDetailsService) : WebSecurityConfigurerAdapter() {
+class SecurityConfiguration(private val userDetailsService: UserDetailsService, private val jwtUtil: JWTUtil) :
+    WebSecurityConfigurerAdapter() {
+
+
     override fun configure(http: HttpSecurity?) {
         http?.
+            /* Necessario deixar HABILITADO para evitar que o token seja interceptado por algum malicioso. Como n éo foco...aqui ele ficará desabilidtado pprecisaria de ainda mais
+            config pra funcionar
+        */
+        csrf()?.disable()?.
             // Autorize as requisições que
-        authorizeRequests()?.//antMatchers(HttpMethod.POST, "/usuarios")?.permitAll()?.
+        authorizeRequests()?.antMatchers("/autores")?.hasAnyAuthority("LEITURA_ESCRITA")?.
+            //Como eu estou usando Token, eu preciso gerá-lo primeiro e fornecer ao usuario. Isso será feito no /login
+        antMatchers(HttpMethod.POST, "/login")?.permitAll()?.
             //independente da requisição (Qualquer requisição)
         anyRequest()?.
             //Que estiver autenticada
-        authenticated()?.
-            //e
-        and()?.
-            //Sobre o gerenciamento de sessão
-        sessionManagement()?.
+        authenticated()
+
+        //Forneço a classe responsável por filtrar a chamada para validar o token
+        http?.addFilterBefore(
+            JWTLoginFilter(authenticationManager(), jwtUtil),
+            UsernamePasswordAuthenticationFilter().javaClass
+        )
+
+        //Adicionando novo filtro para validar o token por requisição
+        http?.addFilterBefore(
+            JWTAuthenticationFilter(jwtUtil),
+            UsernamePasswordAuthenticationFilter().javaClass
+        )
+
+        //Sobre o gerenciamento de sessão
+        http?.sessionManagement()?.
             //Use o modelo Stateless (A aplicação não deve guardar o status da sessão)
-        sessionCreationPolicy(SessionCreationPolicy.STATELESS)?.and()?.
-            //Sobre o formulario padrão do Spring
-        formLogin()?.
-            // Desabilite
-        disable()?.
-            //A forma de autenticação será o http basic
-        httpBasic()
+        sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
 
     }
 
-//    override fun configure(web: WebSecurity) {
-//        web.ignoring().antMatchers(
-//            "/h2/**",
-//            "/usuarios/**",
-//            "/configuration/**"
-//        )
-//    }
+    override fun configure(web: WebSecurity) {
+        web.ignoring().antMatchers(
+            "/h2/**",
+            "/usuarios/**",
+            "/configuration/**"
+        )
+    }
 
     // O cara que vai checar as infos do cara q quer acessar com o banco de dados
     override fun configure(auth: AuthenticationManagerBuilder?) {

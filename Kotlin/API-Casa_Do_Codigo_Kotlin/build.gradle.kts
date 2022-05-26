@@ -26,6 +26,7 @@ dependencies {
 	implementation("org.springframework.hateoas:spring-hateoas:1.4.1")
 	implementation("org.springframework.boot:spring-boot-starter-security:2.6.6")
 	implementation("org.flywaydb:flyway-core")
+	implementation("io.jsonwebtoken:jjwt:0.9.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

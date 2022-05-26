@@ -1,7 +1,6 @@
 package io.github.monthalcantara.casadocodigo.service
 
-import io.github.monthalcantara.casadocodigo.config.UsuarioLogin
-import io.github.monthalcantara.casadocodigo.model.UsuarioEntity
+import io.github.monthalcantara.casadocodigo.model.Usuario
 import io.github.monthalcantara.casadocodigo.repository.UsuarioRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -17,7 +16,7 @@ class UsuarioService(private val usuarioRepository: UsuarioRepository): UserDeta
     }
 
     @Transactional
-    fun salva(usuarioEntity: UsuarioEntity): UsuarioEntity {
-        return usuarioRepository.save(usuarioEntity)
+    fun salva(usuario: Usuario): Usuario {
+        return usuarioRepository.save(usuario)
     }
 }

@@ -1,1 +1,1 @@
-INSERT INTO usuarios (id, username, password) VALUES (1, 'teste@teste.com','$2a$12$slHhzb1YQHwqBGEi/KVJkuLBpohLVqiX6nxqWpZ9KusZqqm1KVJwi');
+INSERT INTO usuario (id, username, password) VALUES (1, 'teste@teste.com','$2a$12$slHhzb1YQHwqBGEi/KVJkuLBpohLVqiX6nxqWpZ9KusZqqm1KVJwi');
