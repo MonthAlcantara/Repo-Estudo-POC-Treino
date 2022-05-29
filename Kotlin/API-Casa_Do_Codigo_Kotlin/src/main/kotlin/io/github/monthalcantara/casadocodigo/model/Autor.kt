@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name ="autores")
-data class AutorEntity(
+data class Autor(
     @field:Id @field:GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
     @Column(nullable = false) val email: String,
     @Column(nullable = false) val nome: String,

@@ -1,4 +1,4 @@
-package io.github.monthalcantara.casadocodigo.config
+package io.github.monthalcantara.casadocodigo.security
 
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.filter.OncePerRequestFilter

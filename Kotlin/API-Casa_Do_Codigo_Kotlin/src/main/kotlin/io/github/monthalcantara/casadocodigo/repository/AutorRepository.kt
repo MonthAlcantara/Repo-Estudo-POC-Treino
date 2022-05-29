@@ -1,13 +1,11 @@
 package io.github.monthalcantara.casadocodigo.repository
 
-import io.github.monthalcantara.casadocodigo.model.AutorEntity
+import io.github.monthalcantara.casadocodigo.model.Autor
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.repository.CrudRepository
-import org.springframework.data.repository.Repository
 
 
-interface AutorRepository : JpaRepository<AutorEntity, Long> {
-    fun findByEmail(email: String): AutorEntity?
-    fun save(entity: AutorEntity): AutorEntity
+interface AutorRepository : JpaRepository<Autor, Long> {
+    fun findByEmail(email: String): Autor?
+    fun save(entity: Autor): Autor
     fun existsByEmail(email: String): Boolean
 }

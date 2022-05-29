@@ -1,4 +1,4 @@
-package io.github.monthalcantara.casadocodigo.config
+package io.github.monthalcantara.casadocodigo.security
 
 import io.github.monthalcantara.casadocodigo.service.UsuarioService
 import io.jsonwebtoken.Jwts
@@ -13,7 +13,9 @@ import java.util.*
 //Classe responsável por construir o JWT que será usado na autenticação
 @Component
 class JWTUtil(private val usuarioService: UsuarioService) {
-    private val expiration: Long = 60000
+
+    @Value("\${jwt.expiration}")
+    private lateinit var expiration: String
 
     //Como esse cara só vai ser carregado em tempo de execução, carregado do properties, eu digo que ele será um lateinit, um inicio tardio
     @Value("\${jwt.secret}")
@@ -27,7 +29,7 @@ class JWTUtil(private val usuarioService: UsuarioService) {
             //Atribuindo as authorities (roles) a chave role
             .claim("role", authorities)
             // Qual a expiração desse Token (Não é a melhor forma pq temos q gerar na mão)
-            .setExpiration(Date(System.currentTimeMillis() + expiration))
+            .setExpiration(Date(System.currentTimeMillis() + expiration.toLong()))
             // Qual o tipo da assinatura que usaremos no token
             .signWith(SignatureAlgorithm.HS512, secret.toByteArray())
             //Compactar tudo

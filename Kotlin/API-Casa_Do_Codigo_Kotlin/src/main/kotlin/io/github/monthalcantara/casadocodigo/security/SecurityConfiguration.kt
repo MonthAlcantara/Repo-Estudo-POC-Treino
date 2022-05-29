@@ -1,6 +1,5 @@
-package io.github.monthalcantara.casadocodigo.config
+package io.github.monthalcantara.casadocodigo.security
 
-import io.github.monthalcantara.casadocodigo.security.JWTLoginFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -27,9 +26,9 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService, 
         */
         csrf()?.disable()?.
             // Autorize as requisições que
-        authorizeRequests()?.antMatchers("/autores")?.hasAnyAuthority("LEITURA_ESCRITA")?.
+        authorizeRequests()?.antMatchers("/autores","/categorias")?.hasAnyAuthority("LEITURA_ESCRITA")?.
             //Como eu estou usando Token, eu preciso gerá-lo primeiro e fornecer ao usuario. Isso será feito no /login
-        antMatchers(HttpMethod.POST, "/login")?.permitAll()?.
+        antMatchers("/login", "/usuarios")?.permitAll()?.
             //independente da requisição (Qualquer requisição)
         anyRequest()?.
             //Que estiver autenticada
@@ -56,11 +55,7 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService, 
     }
 
     override fun configure(web: WebSecurity) {
-        web.ignoring().antMatchers(
-            "/h2/**",
-            "/usuarios/**",
-            "/configuration/**"
-        )
+        web.ignoring().antMatchers("/h2/**")
     }
 
     // O cara que vai checar as infos do cara q quer acessar com o banco de dados

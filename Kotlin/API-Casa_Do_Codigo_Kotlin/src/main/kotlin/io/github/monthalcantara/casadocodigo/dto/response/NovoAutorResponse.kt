@@ -2,7 +2,7 @@ package io.github.monthalcantara.casadocodigo.dto.response
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import io.github.monthalcantara.casadocodigo.model.AutorEntity
+import io.github.monthalcantara.casadocodigo.model.Autor
 import org.springframework.hateoas.Link
 import org.springframework.hateoas.RepresentationModel
 import java.time.LocalDateTime
@@ -16,11 +16,11 @@ data class NovoAutorResponse(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy") val instanteCriacao: LocalDateTime,
     val initialLink: Link
 ) : RepresentationModel<NovoAutorResponse>() {
-    constructor(autorEntity: AutorEntity, initialLink: Link) : this(
-        id = autorEntity.id, email = autorEntity.email,
-        nome = autorEntity.email,
-        descricao = autorEntity.descricao,
-        instanteCriacao = autorEntity.instanteCriacao, initialLink = initialLink
+    constructor(autor: Autor, initialLink: Link) : this(
+        id = autor.id, email = autor.email,
+        nome = autor.email,
+        descricao = autor.descricao,
+        instanteCriacao = autor.instanteCriacao, initialLink = initialLink
     )
 
 

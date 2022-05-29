@@ -1,7 +1,6 @@
 package io.github.monthalcantara.casadocodigo.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.github.monthalcantara.casadocodigo.config.JWTUtil
 import io.github.monthalcantara.casadocodigo.model.Credentials
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

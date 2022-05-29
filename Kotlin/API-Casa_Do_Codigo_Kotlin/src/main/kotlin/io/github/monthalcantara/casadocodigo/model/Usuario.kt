@@ -10,9 +10,8 @@ data class Usuario(
     val id: Long? = null,
     val username: String,
     val password: String,
-
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_role")
-    val role: List<Role> = mutableListOf()
+    var role: List<Role> = mutableListOf()
 )

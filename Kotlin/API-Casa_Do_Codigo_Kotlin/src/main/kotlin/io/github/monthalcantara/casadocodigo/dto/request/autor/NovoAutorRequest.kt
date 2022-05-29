@@ -1,6 +1,6 @@
 package io.github.monthalcantara.casadocodigo.dto.request.autor
 
-import io.github.monthalcantara.casadocodigo.model.AutorEntity
+import io.github.monthalcantara.casadocodigo.model.Autor
 import java.time.LocalDateTime
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
@@ -13,7 +13,7 @@ data class NovoAutorRequest(
 ) {
     val instanteCriacao: LocalDateTime = LocalDateTime.now()
 
-    fun toEntity() = AutorEntity(
+    fun toEntity() = Autor(
         email = this.email,
         nome = this.nome,
         descricao = this.descricao,

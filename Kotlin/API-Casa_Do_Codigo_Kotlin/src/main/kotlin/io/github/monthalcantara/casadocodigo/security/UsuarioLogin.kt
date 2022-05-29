@@ -1,4 +1,4 @@
-package io.github.monthalcantara.casadocodigo.service
+package io.github.monthalcantara.casadocodigo.security
 
 import io.github.monthalcantara.casadocodigo.model.Usuario
 import org.springframework.security.core.userdetails.UserDetails
