@@ -1,6 +1,6 @@
 package io.github.monthalcantara.casadocodigo.controller.autor
 
-import io.github.monthalcantara.casadocodigo.dto.response.NovoAutorResponse
+import io.github.monthalcantara.casadocodigo.dto.response.autor.AutorResponse
 import io.github.monthalcantara.casadocodigo.service.ConsultaAutorService
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
@@ -20,12 +20,12 @@ class ConsultaAutorController(val consultaAutorService: ConsultaAutorService) {
     val log = LoggerFactory.getLogger(ConsultaAutorController::class.java)
 
     @GetMapping
-    fun consulta( @PageableDefault(size = 10,sort = ["nome"]) pageable: Pageable): ResponseEntity<Page<NovoAutorResponse>> {
+    fun consulta( @PageableDefault(size = 10,sort = ["nome"]) pageable: Pageable): ResponseEntity<Page<AutorResponse>> {
 
         log.info("Recebida solicitação para consulta de autor")
 
         val autorEntity = consultaAutorService.executa(pageable)
-            .map {NovoAutorResponse(it,  geraLinkHateoas(it.id!!))}
+            .map { AutorResponse(it,  geraLinkHateoas(it.id!!)) }
 
         log.info("Realizado consulta  de autor")
 

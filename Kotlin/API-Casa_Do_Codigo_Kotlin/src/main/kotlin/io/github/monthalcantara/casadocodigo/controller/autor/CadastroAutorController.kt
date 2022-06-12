@@ -1,13 +1,11 @@
 package io.github.monthalcantara.casadocodigo.controller.autor
 
 import io.github.monthalcantara.casadocodigo.dto.request.autor.NovoAutorRequest
-import io.github.monthalcantara.casadocodigo.dto.response.NovoAutorResponse
+import io.github.monthalcantara.casadocodigo.dto.response.autor.AutorResponse
 import io.github.monthalcantara.casadocodigo.geraLinkHateoas
 import io.github.monthalcantara.casadocodigo.service.CadastroAutorService
 import org.slf4j.LoggerFactory
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.hateoas.Link
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -24,7 +22,7 @@ class CadastroAutorController(val cadastraAutorService: CadastroAutorService) {
 
     @PostMapping
     @Transactional
-    fun cadastraNovoAutor(@Valid @RequestBody novoAutor: NovoAutorRequest): ResponseEntity<NovoAutorResponse> {
+    fun cadastraNovoAutor(@Valid @RequestBody novoAutor: NovoAutorRequest): ResponseEntity<AutorResponse> {
 
         log.info("Recebida solicitação para cadastro de novo autor")
 
@@ -36,7 +34,7 @@ class CadastroAutorController(val cadastraAutorService: CadastroAutorService) {
 
         log.info("Link Hateoas gerado para o id: ${autorEntity.id}")
 
-        return ResponseEntity.ok(NovoAutorResponse(autorEntity, link))
+        return ResponseEntity.ok(AutorResponse(autorEntity, link))
     }
 
 

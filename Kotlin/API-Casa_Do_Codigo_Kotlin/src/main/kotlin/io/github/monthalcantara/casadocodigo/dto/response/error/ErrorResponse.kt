@@ -1,4 +1,4 @@
-package io.github.monthalcantara.casadocodigo.dto.response
+package io.github.monthalcantara.casadocodigo.dto.response.error
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDateTime

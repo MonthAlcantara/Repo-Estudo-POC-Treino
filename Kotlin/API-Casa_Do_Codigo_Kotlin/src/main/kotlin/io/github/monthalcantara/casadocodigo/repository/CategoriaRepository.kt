@@ -4,6 +4,6 @@ import io.github.monthalcantara.casadocodigo.model.Categoria
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface CategoriaRepository: JpaRepository<Categoria, Long> {
-    fun findByNome(nome: String): Categoria?
+    fun existsByNome(nome: String): Boolean
 
 }

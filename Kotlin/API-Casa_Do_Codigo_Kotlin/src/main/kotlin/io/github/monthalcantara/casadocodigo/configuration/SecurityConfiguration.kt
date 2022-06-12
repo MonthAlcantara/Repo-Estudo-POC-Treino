@@ -1,8 +1,10 @@
-package io.github.monthalcantara.casadocodigo.security
+package io.github.monthalcantara.casadocodigo.configuration
 
+import io.github.monthalcantara.casadocodigo.security.JWTAuthenticationFilter
+import io.github.monthalcantara.casadocodigo.security.JWTLoginFilter
+import io.github.monthalcantara.casadocodigo.security.JWTUtil
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
@@ -26,7 +28,7 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService, 
         */
         csrf()?.disable()?.
             // Autorize as requisições que
-        authorizeRequests()?.antMatchers("/autores","/categorias")?.hasAnyAuthority("LEITURA_ESCRITA")?.
+        authorizeRequests()?.antMatchers("/autores","/categorias", "/livros", "/usuarios")?.hasAnyAuthority("LEITURA_ESCRITA")?.
             //Como eu estou usando Token, eu preciso gerá-lo primeiro e fornecer ao usuario. Isso será feito no /login
         antMatchers("/login", "/usuarios")?.permitAll()?.
             //independente da requisição (Qualquer requisição)
