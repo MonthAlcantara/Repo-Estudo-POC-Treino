@@ -33,7 +33,8 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("io.jsonwebtoken:jjwt:0.9.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("com.h2database:h2")
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation("mysql:mysql-connector-java:8.0.29")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
