@@ -36,6 +36,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
 	implementation("mysql:mysql-connector-java:8.0.29")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	// https://mvnrepository.com/artifact/io.mockk/mockk
+	testImplementation("io.mockk:mockk:1.12.2")
+	// https://mvnrepository.com/artifact/org.assertj/assertj-core
+	testImplementation("org.assertj:assertj-core:3.22.0")
 }
 
 tasks.withType<KotlinCompile> {
