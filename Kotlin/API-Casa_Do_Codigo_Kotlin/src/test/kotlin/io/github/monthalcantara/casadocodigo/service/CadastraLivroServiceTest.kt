@@ -42,7 +42,6 @@ class CadastraLivroServiceTest {
         1L,
         1L
     )
-
     //Dentro da declaração do mock eu ja posso dizer o que ele deve fazer
     private val consultaAutorService: ConsultaAutorService = mockk { every { buscaPorId(any()) } returns autor }
     private val categoriaRepository: CategoriaRepository =
