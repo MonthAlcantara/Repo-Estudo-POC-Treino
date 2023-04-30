@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
-
 @Service
 class NotificaNovoCadastroService(
     val notificationMessagingTemplate: NotificationMessagingTemplate,
@@ -18,10 +17,10 @@ class NotificaNovoCadastroService(
     fun notifica(request: PessoaRequest) {
 
         //Using convertAndSend method
-        log.info("Method convertAndSend args <<object dto>>. Using default topic.")
+        log.info("Method convertAndSend args $request. Using default topic.")
 
         notificationMessagingTemplate.convertAndSend(request)
 
-        log.info("Method convertAndSend args  <<topic name>> and <<object dto>>. ")
+        log.info("Method convertAndSend args $topicName and $request.")
     }
 }
